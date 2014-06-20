@@ -37,6 +37,20 @@
         </ul>
       </div>
 
+      <div class="row">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            AB Testing: {{selectedAb.id}}
+          </div>
+          <div class="panel-body">
+            <p>{{selectedAb.description}}</p>
+            <span class="label " ng-class="{'label-success': selectedAb.activated}">ACTIVADO</span>
+          </div>
+        </div>
+      </div>
+
+
+
       <!-- FORM -->
       <div class="row">
         <form class="form-horizontal" role="form">
