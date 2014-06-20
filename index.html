@@ -29,22 +29,57 @@
       </div>
 
       <div class="row">
-        <ul class="list-group">
-          <a href="#" class="list-group-item" ng-repeat="ab in abs | filter:query">
-            <h4 class="list-group-item-heading">{{ab.id}}</h4>
-            <p class="list-group-item-text">{{ab.description}}</p>
-          </a>
-        </ul>
+        <div class="col-lg-9">
+          <ul class="list-group">
+            <a href="#" class="list-group-item" ng-repeat="ab in abs | filter:query">
+              <h4 class="list-group-item-heading">{{ab.id}}</h4>
+              <p class="list-group-item-text">{{ab.description}}</p>
+            </a>
+          </ul>
+        </div>
       </div>
 
+      <!-- DATOS DEL AB -->
       <div class="row">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            AB Testing: {{selectedAb.id}}
-          </div>
-          <div class="panel-body">
-            <p>{{selectedAb.description}}</p>
-            <span class="label " ng-class="{'label-success': selectedAb.activated}">ACTIVADO</span>
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              AB Testing: {{selectedAb.id}} <span class="label label-default" ng-class="{'label-success': selectedAb.activated}">{{selectedAb.activated ? 'AB ACTIVADO' : 'AB DESACTIVADO'}}</span>
+            </div>
+            <div class="panel-body">
+
+              <p>{{selectedAb.description}}</p>
+
+              <!-- Flows -->
+              <div class="panel panel-info flows-holder">
+                <div class="panel-heading">
+                  Flows
+                </div>
+                <div class="panel-body">
+                  <div class="list-group flow-item" ng-repeat="flow in selectedAb.flows">
+
+                    <!-- Activated -->
+                    <span class="label label-default" ng-class="{'label-primary': flow.activated}">{{flow.activated ? 'FLOW ACTIVADO' : 'FLOW DESACTIVADO'}}</span>
+
+                    <!-- Validations -->
+                    <ul>
+                      <strong>Validations</strong>
+                      <li ng-if="flow.validations.site">SITE: {{flow.validations.site}}</li>
+                      <li ng-if="flow.validations.destination">DESTINATION: {{flow.validations.destination}}</li>
+                      <li ng-if="flow.validations.flow">FLOW: {{flow.validations.flow}}</li>
+                    </ul>
+
+                    <!-- Ranges -->
+                    <ul>
+                      <strong>Ranges</strong>
+                      <li ng-repeat="range in flow.ranges">{{range.value}} {{range.startRange}} a {{range.endRange}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
@@ -77,26 +112,6 @@
               </div>
             </div>
           </div>
-
-          <!-- FLUJOS -->
-          <ul class="list-group">
-            <li class="list-group-item" ng-repeat="flow in selectedAb.flows">
-              FLOW:
-              <ul class="list-group">
-                <li class="list-group-item">
-                  Estado: {{flow.activated}}
-                </li>
-                <li class="list-group-item">
-                  RANGOS:
-                  <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="range in flow.ranges">{{range.startRange}} | {{range.endRange}} | {{range.value}}</li>
-                  </ul>
-
-                </li>
-              </ul>
-              
-            </li>
-          </ul>
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

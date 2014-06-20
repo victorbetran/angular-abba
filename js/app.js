@@ -116,7 +116,8 @@ var abTestings = [
                     "activated": true,
                     "validations": {
                         "destination": "982",
-                        "site": "co"
+                        "site": "co",
+                        "flow":"landing"
                     },
                     "ranges": [
                         {
@@ -171,7 +172,7 @@ var abTestings = [
                     ]
                 },
                 {
-                    "activated": true,
+                    "activated": false,
                     "validations": {
                         "destination": "982",
                         "site": "mx"
@@ -263,7 +264,7 @@ var abTestings = [
         },
         {
             "id":"satelliteMapSource",
-            "activated": true,
+            "activated": false,
             "description":"Define la fuente de tiles de los mapas de satelite",
             "flows":[
                 {
@@ -285,7 +286,7 @@ var abTestings = [
                     ]
                 },
                 {
-                    "activated": true,
+                    "activated": false,
                     "validations": {
                         "site": "ar"
                     },
