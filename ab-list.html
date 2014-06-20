@@ -1,0 +1,25 @@
+<div ng-controller="ABListCtrl">
+
+  <!-- Filtro -->
+  <div class="row">
+    <div class="col-lg-6 filter-holder">
+      <div class="form-group">
+        <label>Filtrar</label>
+        <input type="text" class="form-control" ng-model="query">
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de ABs -->
+  <div class="row">
+    <div class="col-lg-9">
+      <ul class="list-group">
+        <a href="#/abs/{{$index}}" class="list-group-item" ng-repeat="ab in abs | filter:query">
+          <h4 class="list-group-item-heading">{{ab.id}}</h4>
+          <p class="list-group-item-text">{{ab.description}}</p>
+        </a>
+      </ul>
+    </div>
+  </div>
+
+</div>

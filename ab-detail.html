@@ -1,0 +1,46 @@
+<!-- DATOS DEL AB -->
+<div class="row" ng-controller="ABDetailCtrl">
+
+  <div class="col-lg-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        {{selectedAb.id}} <span class="label label-default" ng-class="{'label-success': selectedAb.activated}">{{selectedAb.activated ? 'AB ACTIVADO' : 'AB DESACTIVADO'}}</span>
+      </div>
+      <div class="panel-body">
+
+        <p>{{selectedAb.description}}</p>
+
+        <!-- Flows -->
+        <div class="panel panel-info flows-holder">
+          <div class="panel-heading">
+            Flows
+          </div>
+          <div class="panel-body">
+            <div class="list-group flow-item" ng-repeat="flow in selectedAb.flows">
+
+              <!-- Activated -->
+              <span class="label label-default" ng-class="{'label-primary': flow.activated}">{{flow.activated ? 'FLOW ACTIVADO' : 'FLOW DESACTIVADO'}}</span>
+
+              <!-- Validations -->
+              <ul ng-if="flow.validations">
+                <strong>Validations</strong>
+                <li ng-if="flow.validations.site">Site: {{flow.validations.site}}</li>
+                <li ng-if="flow.validations.destination">Destination: {{flow.validations.destination}}</li>
+                <li ng-if="flow.validations.flow">Flow: {{flow.validations.flow}}</li>
+                <li ng-if="flow.validations.startDate">Start Date: {{flow.validations.startDate}}</li>
+                <li ng-if="flow.validations.endDate">End Date: {{flow.validations.endDate}}</li>
+              </ul>
+
+              <!-- Ranges -->
+              <ul ng-if="flow.ranges">
+                <strong>Ranges</strong>
+                <li ng-repeat="range in flow.ranges">{{range.value}} {{range.startRange}} a {{range.endRange}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
