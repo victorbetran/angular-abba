@@ -1,5 +1,15 @@
 #ABBA AngularJS
 
+Instalar dependencias de node:
+```
+npm install
+```
+
+Instalar dependencias de bower:
+```
+bower install
+```
+
 Para levantar la "app" ejecutar:
 
 ```
