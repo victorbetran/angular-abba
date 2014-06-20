@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="abbaApp">
+<head>
+  <meta charset="utf-8">
+  <title>ABBA Backoffice</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/abba.css">
+  <script src="js/angular.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <div ng-controller="ABListCtrl">
+      <div class="page-header">
+        <h1><img src="images/abba.jpeg" alt="ABBA" class="img-rounded logo-image">ABBA - AB Testings</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 filter-holder">
+          <div class="form-group">
+            <label>Filtrar</label>
+            <input type="text" class="form-control" ng-model="query">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <ul class="list-group">
+          <a href="#" class="list-group-item" ng-repeat="ab in abs | filter:query">
+            <h4 class="list-group-item-heading">{{ab.name}}</h4>
+            <p class="list-group-item-text">{{ab.description}}</p>
+          </a>
+        </ul>
+      </div>
+    </div>
+
+  </div> <!-- /container -->
+
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+[
+    {"name": "preferredHotels",
+     "description": "Hoteles Preferidos de SORT"},
+    {"name": "travellerAssistance",
+     "description": "Asistencia al viajero"},
+    {"name": "resultVersion",
+     "description": "Versiones de resultados de hoteles"},
+    {"name": "collapsedFilters",
+     "description": "Indica si todos los filtros, menos Estrellas, Tipo de hotel, Regímenes, Rango de precios aparezcan colapsados"}
+]
