@@ -34,18 +34,24 @@ abbaApp.controller('ABListCtrl', ['$scope', '$http',
 abbaApp.controller('ABDetailCtrl', ['$scope', '$http', '$routeParams',
   function($scope, $http, $routeParams) {
     this.abTesting = {
+      id: "",
       activated: true,
-      validations: {},
-      ranges: [{
-        value: "ON",
-        startRange: 1,
-        endRange: 50
-      },
-      {
-        value: "OFF",
-        startRange: 51,
-        endRange: 100
+      description: "",
+      flows:[{
+        activated: true,
+        validations: {},
+        ranges: [{
+          value: "ON",
+          startRange: 1,
+          endRange: 50
+        },
+        {
+          value: "OFF",
+          startRange: 51,
+          endRange: 100
+        }]
       }]
+      
     };
     $scope.abId = $routeParams.abId;
 
@@ -64,21 +70,50 @@ abbaApp.controller('ABDetailCtrl', ['$scope', '$http', '$routeParams',
       console.log('Description: ' + this.abTesting.description);
       console.log('Activated?: ' + this.abTesting.activated);
 
-      console.log('Validations - Site: ' + this.abTesting.validations.site);
-      console.log('Validations - Destination: ' + this.abTesting.validations.destination);
-      console.log('Validations - Flow: ' + this.abTesting.validations.flow);
-      console.log('Validations - StartDate: ' + this.abTesting.validations.startDate);
-      console.log('Validations - EndDate: ' + this.abTesting.validations.endDate);
-      for (var i = 0; i < this.abTesting.ranges.length; i++) {
-        console.log('Ranges - Value: ' + this.abTesting.ranges[i].value);
-        console.log('Ranges - StartRange: ' + this.abTesting.ranges[i].startRange);
-        console.log('Ranges - EndRange: ' + this.abTesting.ranges[i].endRange);
+      var flows = this.abTesting.flows;
+      for (var i = 0; i < flows.length; i++) {
+
+        console.log('Validations - Site: ' + flows[i].validations.site);
+        console.log('Validations - Destination: ' + flows[i].validations.destination);
+        console.log('Validations - Flow: ' + flows[i].validations.flow);
+        console.log('Validations - StartDate: ' + flows[i].validations.startDate);
+        console.log('Validations - EndDate: ' + flows[i].validations.endDate);
+        var ranges = flows[i].ranges;
+        for (var j = 0; j < flows[i].ranges.length; j++) {
+          console.log('Ranges - Value: ' + ranges[j].value);
+          console.log('Ranges - StartRange: ' + ranges[j].startRange);
+          console.log('Ranges - EndRange: ' + ranges[j].endRange);
+        };
       };
 
     };
 
-    this.addRange = function() {
-      this.abTesting.ranges.push({
+    // La idea es que en el edit se llene el formulario, no está funcionando
+    // Puede ser un tema de Scope o de que el Controller está en divs hermanos y no en el mismo
+    this.editAb = function(ab) {
+      this.abTesting = ab;
+      console.log(this.abTesting);
+    };
+
+    this.addFlow = function() {
+      this.abTesting.flows.push({
+        activated: true,
+        validations: {},
+        ranges: [{
+          value: "ON",
+          startRange: 1,
+          endRange: 50
+        },
+        {
+          value: "OFF",
+          startRange: 51,
+          endRange: 100
+        }]
+      });
+    };
+
+    this.addRange = function(flow) {
+      flow.ranges.push({
         value: "DEFAULT",
         startRange: 0,
         endRange: 0
