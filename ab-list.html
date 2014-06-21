@@ -15,8 +15,11 @@
     <div class="col-lg-9">
       <ul class="list-group">
         <a href="#/abs/{{$index}}" class="list-group-item" ng-repeat="ab in abs | filter:query">
-          <h4 class="list-group-item-heading">{{ab.id}}</h4>
-          <p class="list-group-item-text">{{ab.description}}</p>
+          <h4 class="list-group-item-heading">
+            {{ab.id}}
+            <span class="label label-default" ng-class="{'label-success': ab.activated}">{{ab.activated ? 'AB ACTIVADO' : 'AB DESACTIVADO'}}</span>
+          </h4>
+          <p class="list-group-item-text">{{ab.description}}</p> 
         </a>
       </ul>
     </div>

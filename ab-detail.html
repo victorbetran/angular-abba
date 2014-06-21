@@ -43,4 +43,76 @@
       </div>
     </div>
   </div>
+
+  <!-- Form -->
+  <div class="col-lg-6">
+    <form name="abForm" ng-controller="ABDetailCtrl as abFormCtrl" ng-submit="abFormCtrl.addABTesting()">
+      <div class="form-group">
+        <label for="abNameInput">AB Testing Name/ID</label>
+        <input type="text" class="form-control" id="abNameInput" ng-model="abFormCtrl.abTesting.id">
+      </div>
+      <div class="form-group">
+        <label for="abDescriptionInput">AB Testing Description</label>
+        <textarea class="form-control" rows="3" ng-model="abFormCtrl.abTesting.description"></textarea>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="abFormCtrl.abTesting.activated"> Activated?
+        </label>
+      </div>
+
+      VALIDATIONS
+
+      <div class="form-group">
+        <label for="abValidationSiteInput">Site</label>
+        <input type="text" class="form-control" id="abValidationSiteInput" ng-model="abFormCtrl.abTesting.validations.site">
+      </div>
+
+      <div class="form-group">
+        <label for="abValidationDestinationInput">Destination</label>
+        <input type="text" class="form-control" id="abValidationDestinationInput" ng-model="abFormCtrl.abTesting.validations.destination">
+      </div>
+
+      <div class="form-group">
+        <label for="abValidationFlowInput">Flow</label>
+        <select class="form-control" id="abValidationFlowInput" ng-model="abFormCtrl.abTesting.validations.flow">
+          <option>shopping</option>
+          <option>landing</option>
+        </select>
+      </div>
+
+      <!-- Start and End Date -->
+      <div class="form-group col-lg-6">
+        <label for="abValidationStartDateInput">Start Date</label>
+        <input type="date" class="form-control" id="abValidationStartDateInput" ng-model="abFormCtrl.abTesting.validations.startDate">
+      </div>
+
+      <div class="form-group col-lg-6">
+        <label for="abValidationEndDateInput">End Date</label>
+        <input type="date" class="form-control" id="abValidationEndDateInput" ng-model="abFormCtrl.abTesting.validations.endDate">
+      </div>
+
+      <!-- Ranges -->
+      <div class="form-group">
+        <button type="button" class="btn btn-primary">Add Range</button>
+      </div>
+      <div class="row ranges-holder">
+        <div class="form-group col-lg-4">
+          <label>Value</label>
+          <input type="text" class="form-control" ng-model="abFormCtrl.abTesting.ranges[0].value">
+        </div>
+        <div class="form-group col-lg-4">
+          <label>Start Range</label>
+          <input type="text" class="form-control" ng-model="abFormCtrl.abTesting.ranges[0].startRange">
+        </div>
+        <div class="form-group col-lg-4">
+          <label>End Range</label>
+          <input type="text" class="form-control" ng-model="abFormCtrl.abTesting.ranges[0].endRange">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
 </div>
