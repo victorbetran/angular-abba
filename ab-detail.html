@@ -48,7 +48,7 @@
 
   <!-- Form -->
   <div class="col-lg-6">
-    <form name="abForm" ng-controller="ABDetailCtrl as abFormCtrl" ng-submit="abFormCtrl.addABTesting()">
+    <form name="abForm" ng-submit="abFormCtrl.addABTesting()">
       <div class="form-group">
         <label for="abNameInput">AB Testing Name/ID</label>
         <input type="text" class="form-control" id="abNameInput" ng-model="abFormCtrl.abTesting.id">
